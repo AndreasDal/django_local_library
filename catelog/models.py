@@ -131,7 +131,7 @@ class Author(models.Model):
 class Language(models.Model):
     """Model representing a book language (e.g. English, French, Japanese, etc.)."""
     name = models.CharField(
-        max_lenght=200,
+        max_length=200,
         unique=True,
         help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)"
     )
