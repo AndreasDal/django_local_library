@@ -78,6 +78,16 @@ class Book(models.Model):
         null=True
     )
 
+    def display_genre(self):
+        """Create a string for the Genre. This is required to display genre in Admin."""
+        genreText = ', '.join(genre.name for genre in self.genre.all()[:3])
+        numGenres = self.genre.all().count()
+        if numGenres > 3:
+            genreText = genreText + f' (+ {numGenres - 3} more)'
+        return genreText
+    
+    display_genre.short_description = 'Genre'
+
 import uuid # Required for unique book instances
 
 class BookInstance(models.Model):
@@ -100,7 +110,7 @@ class BookInstance(models.Model):
         ('r', 'Reserved'),
     )
 
-    Status = models.CharField(
+    status = models.CharField(
         max_length=1,
         choices=LOAN_STATUS,
         blank=True,
