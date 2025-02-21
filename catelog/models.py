@@ -46,7 +46,7 @@ class Book(models.Model):
     summary = models.TextField(
         max_length=1000,
         help_text="Enter a brief description of the book",
-        null=True
+        null=True,
     )
 
     isbn = models.CharField(
