@@ -1,0 +1,10 @@
+AD, 22.02.2025: Eksempel taget fra MDN Django tutorial part 5
+You can add an image into the page in a similar way, for example:
+
+django
+Copy to Clipboard
+{% load static %}
+<img
+  src="{% static 'images/local_library_model_uml.png' %}"
+  alt="UML diagram"
+  style="width:555px;height:540px;" />
