@@ -1,0 +1,25 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+   <h1>Author: {{ author.full_name }} </h1>
+
+   <!-- <p>Born on: {{author.date_of_birth}}</p> -->
+   <!-- <p>Died on: {{author.date_of_death}}</p> -->
+
+   <p>
+      {{author.date_of_birth}} - 
+      {% if author.date_of_death %}{{author.date_of_death}}{% endif %}
+   </p>
+
+   <!-- <div style="margin-left:20px; margin-top:20px;"> -->
+   <div class="sublist">
+      <h4>Books</h4>
+      {% for book in author.book_set.all %}
+      <!-- code to iterate across all books of an author -->
+         <hr />
+         <p style="color:rgb(50, 90, 142)"><strong>{{ book.title }}</strong></p>
+         <p style="max-width:700px"><em>{{ book.summary }}</em></p>
+         <!-- <p><em>{{ book.summary }}</em></p> -->
+      {% endfor %}
+   </div>
+{% endblock %}

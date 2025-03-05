@@ -22,7 +22,7 @@ urlpatterns = [
 ]
 
 # Use include() to add paths from the catelog application
-from django.urls import include # AD, 13.2.
+from django.urls import include
 
 urlpatterns += [
     path('catelog/', include('catelog.urls')),

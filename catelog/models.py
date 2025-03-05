@@ -142,6 +142,9 @@ class Author(models.Model):
         """String for representing the Model object."""
         return f'{self.last_name}, {self.first_name}'
     
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'
+    
 class Language(models.Model):
     """Model representing a book language (e.g. English, French, Japanese, etc.)."""
     name = models.CharField(

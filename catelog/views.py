@@ -33,3 +33,22 @@ def index(request):
 
     # Render the HTML template with the data in the context variable
     return render(request, 'index.html', context=context)
+
+from django.views import generic
+
+class BookListView(generic.ListView):
+    model = Book
+    #  pagination: The different pages are accessed using GET parameters — 
+    # to access page 2 you would use the URL /catalog/books/?page=2
+    # Support to scroll through the result set is added to base_generic.html template.
+    paginate_by = 10
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 10
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
