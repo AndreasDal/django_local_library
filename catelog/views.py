@@ -22,6 +22,11 @@ def index(request):
     # Genres containing the letter 'a' (case insensitive match)
     num_genres_with_a = Genre.objects.filter(name__icontains='a').count()
 
+    # Number of visits to this page, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    num_visits += 1
+    request.session['num_visits'] = num_visits
+
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
@@ -29,6 +34,7 @@ def index(request):
         'num_authors': num_authors,
         'num_books_with_the': num_books_with_the,
         'num_genres_with_a': num_genres_with_a,
+        'num_visits': num_visits,
     }
 
     # Render the HTML template with the data in the context variable

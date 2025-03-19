@@ -11,6 +11,7 @@
     Welcome to LocalLibrary, a website developed by
     <em>Andreas Dal</em>
 </p>
+<!-- <p>You are logged in as: <strong>{{ user }}</strong></p> -->
 <h2>Dynamic Content</h2>
 <p>The library has the following record counts:</p>
 <ul>
@@ -21,5 +22,9 @@
     <li><strong>Books containing the word "the":</strong> {{ num_books_with_the }}</li>
     <li><strong>Genres containing 'a': </strong> {{ num_genres_with_a }}</li>
 </ul>
+
+<p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize}}.
+</p>
 
 {% endblock %}
