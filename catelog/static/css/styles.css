@@ -1,9 +1,16 @@
 .sidebar-nav {
     margin-top: 20px;
-    padding: 0;
+    padding: 10;
     list-style: none;
     /* color: red; */
 }
+
+/* Adjust spacing */
+/* ul.custom-list li {
+    margin-bottom: 10px;
+} */
+
+
 
 .sublist {
     margin-left: 20px; 

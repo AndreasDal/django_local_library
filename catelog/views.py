@@ -3,6 +3,9 @@ from django.shortcuts import render
 # Create your views here.
 from .models import Book, Author, BookInstance, Genre
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
+
 def index(request):
     """View function for home page of site."""
 
@@ -58,3 +61,29 @@ class AuthorListView(generic.ListView):
 
 class AuthorDetailView(generic.DetailView):
     model = Author
+
+class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
+    """Generic class-based view listing book on loan by current user."""
+    model = BookInstance
+    template_name = 'catelog/bookinstance_list_borrowed_user.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return (
+            BookInstance.objects.filter(borrower=self.request.user)
+            .filter(status__exact='o')
+            .order_by('due_back')
+        )
+    
+class LoanedBooksListView(PermissionRequiredMixin, generic.ListView):
+    """Generic class-based view listing all books loaned out to users."""
+    permission_required = 'catelog.can_mark_returned'
+    model = BookInstance
+    template_name = 'catelog/bookinstance_list_loaned_out.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return(
+            BookInstance.objects.filter(status__exact='o')
+            .order_by('due_back')
+        )

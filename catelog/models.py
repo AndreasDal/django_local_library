@@ -95,6 +95,7 @@ import uuid # Required for unique book instances
 class BookInstance(models.Model):
     """Model representing a specific copy of a book (i.e. that can be borrowed
        from the library)."""
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -126,10 +127,13 @@ class BookInstance(models.Model):
     @property
     def is_overdue(self):
         """Determines if the book is overdue based on due date and current date."""
-        return bool(self.due_back and date.today > self.due_back)
+        return bool(self.due_back and date.today() > self.due_back)
 
     class Meta:
         ordering = ['due_back']
+        # Defining permissions is done on the model class Meta section, using 
+        # the permissions field
+        permissions = [("can_mark_returned", "Set book as returned"),]
 
     def __str__(self):
         return f'{self.id} ({self.book.title})'

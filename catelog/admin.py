@@ -50,7 +50,7 @@ class BookAdmin(admin.ModelAdmin):
 # Register the Admin class for BookInstance model using the decorator
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'book', 'imprint', 'due_back', 'status')
+    list_display = ('id', 'book', 'imprint', 'borrower', 'due_back', 'status')
     list_filter = ('book', 'status', 'due_back')
     
     fieldsets = (
@@ -59,6 +59,6 @@ class BookInstanceAdmin(admin.ModelAdmin):
         }),
         ('Availability', {
             # 'classes': ['collapse'],
-            'fields': ('status', 'due_back') 
+            'fields': ('status', 'borrower', 'due_back') 
         }),
     )
