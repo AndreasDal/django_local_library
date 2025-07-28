@@ -132,7 +132,7 @@ class BookInstance(models.Model):
     class Meta:
         ordering = ['due_back']
         # Defining permissions is done on the model class Meta section, using 
-        # the permissions field
+        # the permissions field     
         permissions = [("can_mark_returned", "Set book as returned"),]
 
     def __str__(self):
@@ -147,6 +147,7 @@ class Author(models.Model):
 
     class Meta:
         ordering = ['last_name', 'first_name']
+        permissions = [("can_create_author", "Can create author")]
 
     def get_absolute_url(self):
         """Returns the URL to access a particular author instance."""
