@@ -27,10 +27,12 @@
    {% if perms.catelog.change_author or perms.catelog.delete_author %}
       <hr>
       <ul class="sidebar-nav">
+         <li class="h6">Maintain Author</li>
          {% if perms.catelog.change_author %}
             <li><a href="{% url 'author-update' author.id %}">Update author</a></li>
          {% endif %}
-         {% if not author.book_sel.all or perms.catelog.delete_author %}
+         {% comment %} {% if not author.book_set.all and perms.catelog.delete_author %} {% endcomment %}
+         {% if perms.catelog.delete_author %}
             <li><a href="{% url 'author-delete' author.id %}">Delete author</a></li>
          {% endif %}
       </ul>

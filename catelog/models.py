@@ -104,7 +104,8 @@ class BookInstance(models.Model):
 
     book = models.ForeignKey('Book', on_delete=models.RESTRICT, null=True)
     imprint = models.CharField(max_length=200)
-    due_back = models.DateField(null=True, blank=True)
+    due_back = models.DateField(null=True, blank=True, help_text="A date between now and 4 weeks.")
+    # due_back = models.DateField(null=True, blank=True, help_text="A date between now and 4 weeks.", verbose_name="Renewal date")
 
     LOAN_STATUS = (
         ('m', 'Maintenance'),

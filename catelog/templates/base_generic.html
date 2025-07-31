@@ -38,7 +38,7 @@
                 <li class="h6">Staff</li>
                 {% if user.is_staff %}
                   <li><a href="{% url 'loaned-out' %}">All borrowed</a></li>
-                  {% if perms.catalog.add_author %}
+                  {% if perms.catelog.add_author %}
                     <li><a href="{% url 'author-create' %}">Create author</a></li>
                   {% endif %}
                 {% endif %}

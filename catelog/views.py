@@ -113,7 +113,7 @@ def renew_book_librarian(request, pk):
     """View function for renewing a specific BookInstance by librarian."""
     book_instance = get_object_or_404(BookInstance, pk=pk)
 
-    # If this is as POST method then process the Form data
+    # If this is a POST method then process the Form data
     if request.method == "POST":
         # Create a form instance and populate it with data from the request (binding):
         # form = RenewBookForm(request.POST)

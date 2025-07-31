@@ -5,7 +5,7 @@
    <h1>Renew: {{ book_instance.book.title }}</h1>
    <p>Borrower: {{ book_instance.borrower}}</p>
    <p {% if book_instance.is_overdue %} class="text-danger" {% endif %} > 
-      Due date: {{ book_instance.is_overdue }}
+      Due date: {{ book_instance.due_back }}
    </p>
 
    <form action="" method="post">
@@ -13,6 +13,15 @@
       <table>
          {{ form.as_table }}
       </table>
+      {% comment %} <ul>
+         {{ form.as_ul }}
+      </ul> {% endcomment %}
+      {% comment %} <p> {% endcomment %}
+         {% comment %} {{ form.as_p }} {% endcomment %}
+      {% comment %} </p´> {% endcomment %}
+      {% comment %} <p>
+         "renewal_date help_text: " {{ form.due_back.value }}
+      </p> {% endcomment %}
       <input type="submit" value="Submit">
    </form>
 
