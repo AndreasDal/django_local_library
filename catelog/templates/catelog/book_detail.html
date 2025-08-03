@@ -30,7 +30,32 @@
       {% endif %}
       <p><strong>Imprint:</strong> {{ copy.imprint }}</p>
       <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
+      {% comment %} <a href="">Update</a> {% endcomment %}
+      {% comment %} <p>type er: {{ copy.id }}</p> {% endcomment %}
+      <a href="{% url 'bookinstance-update' copy.id %}">Update</a>
+      <a href="{% url 'bookinstance-delete' copy.id %}">Delete</a>
    {% endfor %}
 </div>
 
 {% endblock %}
+
+{% block sidebar %}
+   {{ block.super }}
+
+   {% if perms.catelog.change_book or perms.catelog.delete_book %}
+      <hr>
+      <ul class="sidebar-nav">
+         <li class="h6">Maintain book</li>
+         {% if perms.catelog.change_book %}
+            <li><a href="{% url 'book-update' book.id %}">Update book</a></li>
+         {% endif %}
+         {% if perms.catelog.delete_book %}
+            <li><a href="{% url 'book-delete' book.id %}">Delete book</a></li>
+         {% endif %}
+         {% if perms.catelog.add_bookinstance %}
+            <li><a href="{% url 'bookinstance-create' book.id %}">Create copy</a></li>
+         {% endif %}
+      </ul>
+   {% endif %}
+
+{% endblock sidebar %}

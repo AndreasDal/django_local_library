@@ -137,7 +137,11 @@ class BookInstance(models.Model):
         permissions = [("can_mark_returned", "Set book as returned"),]
 
     def __str__(self):
-        return f'{self.id} ({self.book.title})'
+        return f'{self.id} ({self.book.title if self.book else "No book"})'
+    
+    def get_absolute_url(self):
+        """Returns the URL to access a detail record for this bookinstance."""
+        return reverse('book-detail', args=[str(self.book.id)])
     
 class Author(models.Model):
     """Model representing an Author."""
@@ -148,7 +152,7 @@ class Author(models.Model):
 
     class Meta:
         ordering = ['last_name', 'first_name']
-        permissions = [("can_create_author", "Can create author")]
+        # permissions = [("can_create_author", "Can create author")]
 
     def get_absolute_url(self):
         """Returns the URL to access a particular author instance."""

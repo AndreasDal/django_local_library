@@ -120,6 +120,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Add these lines for static files configuration
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'catelog/static'),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -130,3 +136,7 @@ LOGIN_REDIRECT_URL = '/'
 
 # Logs any emails sent to the console (so you can copy the password reset link from the console)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# OpenAI API Configuration
+# Add your OpenAI API key here or set it as an environment variable
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', 'your-openai-api-key-here')

@@ -26,3 +26,21 @@
     padding: 0;
     margin: 0;
 }
+
+.model-form-div {
+    margin-top: 20px;
+    width: 500px;
+    /* height: 300px; */
+    border: 1px solid;
+    border-radius: 9px;
+    background-color: pink;
+    padding: 10px
+}
+
+.submit-button {
+    border-radius: 6px;
+    border-style: dashed;
+    color: blue;
+    background-color: lightgreen;
+    width: 100px;
+}

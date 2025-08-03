@@ -1,0 +1,16 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+<div class="model-form-div">
+   <form action="" method="post">
+      {% csrf_token %}
+      <table>
+         {{ form.as_table }}
+      </table>
+      <br>
+      <input type="submit" value="Submit" class="submit-button">
+   </form>
+</div>
+
+{% endblock content %}

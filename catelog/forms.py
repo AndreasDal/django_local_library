@@ -57,3 +57,27 @@ class RenewBookModelForm(forms.ModelForm):
         help_texts = {
             "due_back": _("Enter a date between now and 4 weeks (default 3).")
         }
+
+
+class BookInstanceUpdateForm(forms.ModelForm):
+    """Form for updating a BookInstance with read-only id field."""
+    
+    class Meta:
+        model = BookInstance
+        # fields = ["id", "book", "imprint", "due_back", "status", "borrower"]
+        fields = ["imprint", "due_back", "status", "borrower"]
+    
+    # ADA, 2.8.: dette virkede ikke da den ikke kunne gemme opdateret værdier.
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+        
+    #     # Make the id field read-only and disabled
+    #     if self.instance and self.instance.pk:
+    #         self.fields['id'].widget.attrs.update({
+    #             'readonly': 'readonly',
+    #             'disabled': 'disabled',
+    #             'style': 
+    #                 'background-color: #f0f0f0;' +
+    #                 'width: 100%;' +
+    #                 'text-align: center;'
+    #         })

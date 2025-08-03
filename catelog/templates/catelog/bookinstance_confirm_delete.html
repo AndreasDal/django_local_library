@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+   <h1>Delete copy of book:</h1>
+   <h4>
+      <b>ID</b>: {{ bookinstance.id }} <br>
+      <b>Book:</b> {{ bookinstance.book.title }}
+   </h4>
+
+   {% if bookinstance.status != 'a' %}
+      <p style="color:red">
+         You can't delete this copy as it's not available
+         (status is '{{ bookinstance.get_status_display }}').<br> 
+         Change the status to Available and try again.
+      </p>
+   {% else %}
+     <p>Are you sure you want to delete this copy?</p>
+     <form action="" method="post"> 
+      {% csrf_token %}
+      <input type="submit" action="" name="yes, delete.">
+     </form>
+   {% endif %}
+
+{% endblock content %}

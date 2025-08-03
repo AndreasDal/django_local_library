@@ -1,0 +1,33 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+   <h1>Delete book: {{ book }}</h1>
+
+   {% if book.bookinstance_set.all %}
+      {% comment %} <p>You cant delete this book until all its copies have been deleted:</p> {% endcomment %}
+      <p>You cant delete this book until all its copies have been deleted:
+         <br>Number of copies are: {{ book.bookinstance_set.all.count }}
+         <br><a href="">Delete all copies</a>
+      </p>
+      {% comment %} <p>Number of copies are: {{ book.bookinstance_set.all.count }}</p> {% endcomment %}
+      <ul style="list-style-type: none">
+         {% for copy in book.bookinstance_set.all %}
+            <hr>
+            <li><b>ID</b>: {{ copy.id }}
+               <br> Imprint: {{ copy.imprint }}
+               <br> Status: {{ copy.get_status_display }}
+               <br> Due back: {{ copy.due_back }}
+               <br><a href="">Delete copy</a>
+            </li>
+         {% endfor %}
+      </ul>
+   {% else %}
+     <p>Are you sure you want to delete this book?</p>
+     <form action="" method="post"> 
+      {% csrf_token %}
+      <input type="submit" action="" name="yes, delete.">
+     </form>
+   {% endif %}
+
+{% endblock content %}
