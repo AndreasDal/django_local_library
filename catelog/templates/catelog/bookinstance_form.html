@@ -39,44 +39,131 @@
       </form>
    </div>
 
-   {% comment %} Style lavet med Chat {% endcomment %}
+   {% comment %} Professional styling {% endcomment %}
    <style>
+      .model-form-div {
+         max-width: 600px;
+         margin: 0 auto;
+         padding: 30px;
+         {% comment %} background:rgb(255, 181, 202); {% endcomment %}
+         background:rgb(228, 211, 216);
+         border-radius: 8px;
+         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+         border: 1px solid #e1e5e9;
+      }
+      
       .form-fields {
          display: flex;
          flex-direction: column;
-         gap: 15px;
+         gap: 24px;
       }
       
       .form-field {
          display: flex;
          flex-direction: column;
-         gap: 5px;
+         gap: 8px;
       }
       
       .form-field label {
-         font-weight: bold;
-         margin-bottom: 2px;
+         font-weight: 600;
+         font-size: 14px;
+         color: #374151;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         margin-bottom: 4px;
       }
       
       .form-field input,
       .form-field select,
       .form-field textarea {
-         padding: 8px;
-         border: 1px solid #ccc;
-         border-radius: 4px;
+         padding: 12px 16px;
+         border: 2px solid #e5e7eb;
+         border-radius: 6px;
          width: 100%;
          box-sizing: border-box;
+         font-size: 14px;
+         font-family: inherit;
+         transition: all 0.2s ease;
+         background-color: #fafafa;
+      }
+      
+      .form-field input:focus,
+      .form-field select:focus,
+      .form-field textarea:focus {
+         outline: none;
+         border-color: #3b82f6;
+         background-color: #ffffff;
+         box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      
+      .form-field input:hover,
+      .form-field select:hover,
+      .form-field textarea:hover {
+         border-color: #d1d5db;
+         background-color: #f9fafb;
       }
       
       .help-text {
-         color: #666;
-         font-size: 0.9em;
+         color: #6b7280;
+         font-size: 12px;
+         font-style: italic;
+         margin-top: 4px;
       }
       
       .error-message {
-         color: #d32f2f;
-         font-size: 0.9em;
-         margin-top: 2px;
+         color: #dc2626;
+         font-size: 12px;
+         font-weight: 500;
+         margin-top: 4px;
+         padding: 8px 12px;
+         background-color: #fef2f2;
+         border: 1px solid #fecaca;
+         border-radius: 4px;
+      }
+      
+      .submit-button {
+         background-color: #3b82f6;
+         color: white;
+         padding: 12px 24px;
+         border: none;
+         border-radius: 6px;
+         font-size: 14px;
+         font-weight: 600;
+         cursor: pointer;
+         transition: all 0.2s ease;
+         text-transform: uppercase;
+         letter-spacing: 0.5px;
+         margin-top: 8px;
+      }
+      
+      .submit-button:hover {
+         background-color: #2563eb;
+         transform: translateY(-1px);
+         box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      }
+      
+      .submit-button:active {
+         transform: translateY(0);
+         box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+      }
+      
+      h4 {
+         color: #1f2937;
+         font-size: 20px;
+         font-weight: 700;
+         margin-bottom: 16px;
+         border-bottom: 2px solid #e5e7eb;
+         padding-bottom: 8px;
+      }
+      
+      p {
+         color: #4b5563;
+         line-height: 1.6;
+         margin-bottom: 20px;
+      }
+      
+      strong {
+         color: #374151;
       }
    </style>
 

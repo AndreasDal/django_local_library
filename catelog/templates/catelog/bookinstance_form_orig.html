@@ -1,0 +1,83 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+   {% if is_update %}
+      <h4 style="margin-top: 20px;">Update copy</h4>
+      <p><strong>Book:</strong> {{ book_title }}<br>
+         <strong>Instance ID:</strong> {{ instance_id }}
+      </p>
+      {% comment %} <p><strong>Instance ID:</strong> {{ instance_id }}</p> {% endcomment %}
+   {% else %}
+      <h4 style="margin-top: 20px;">Create copy</h4>
+   {% endif %}
+
+   <div class="model-form-div">
+      <form action="" method="post">
+         {% csrf_token %}
+         
+         {% comment %} <table>
+            {{ form.as_table }}
+         </table> {% endcomment %}
+
+         <div class="form-fields">
+            {% for field in form %}
+               <div class="form-field">
+                  <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                  {{ field }}
+                  {% if field.help_text %}
+                     <small class="help-text">{{ field.help_text }}</small>
+                  {% endif %}
+                  {% if field.errors %}
+                     <div class="error-message">{{ field.errors }}</div>
+                  {% endif %}
+               </div>
+            {% endfor %}
+         </div>
+         <br>
+         <input type="submit" value="Submit" class="submit-button">
+      </form>
+   </div>
+
+   {% comment %} Style lavet med Chat {% endcomment %}
+   <style>
+      .form-fields {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+      }
+      
+      .form-field {
+         display: flex;
+         flex-direction: column;
+         gap: 5px;
+      }
+      
+      .form-field label {
+         font-weight: bold;
+         margin-bottom: 2px;
+      }
+      
+      .form-field input,
+      .form-field select,
+      .form-field textarea {
+         padding: 8px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         width: 100%;
+         box-sizing: border-box;
+      }
+      
+      .help-text {
+         color: #666;
+         font-size: 0.9em;
+      }
+      
+      .error-message {
+         color: #d32f2f;
+         font-size: 0.9em;
+         margin-top: 2px;
+      }
+   </style>
+
+{% endblock content %}
