@@ -42,7 +42,7 @@
 {% block sidebar %}
    {{ block.super }}
 
-   {% if perms.catelog.change_book or perms.catelog.delete_book %}
+   {% if perms.catelog.change_book or perms.catelog.delete_book or perms.catelog.add_bookinstance%}
       <hr>
       <ul class="sidebar-nav">
          <li class="h6">Maintain book</li>
