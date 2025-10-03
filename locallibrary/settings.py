@@ -37,11 +37,19 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'FALSE'
 # ALLOWED_HOSTS = []
 
 # AD, 25-09-2025: for deployment ***********************************************
-ALLOWED_HOSTS = ['AndreasDal.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'AndreasDal.pythonanywhere.com',        # pythonanywhere domain
+    '127.0.0.1',                            # local development
+    'localhost',                            # alternative local name
+    'web-production-5511e.up.railway.app',  # Railway domain
+]
 
 ## For example, for a site URL is at 'web-production-3640.up.railway.app'
 ## (replace the string below with your own site URL):
-CSRF_TRUSTED_ORIGINS = ['https://AndreasDal.pythonanywhere.com']
+CSRF_TRUSTED_ORIGINS = [
+    'https://AndreasDal.pythonanywhere.com', # comment
+    'https://web-production-5511e.up.railway.app', # comment               
+]
 
 # During development/for this tutorial you can instead set just the base URL
 # CSRF_TRUSTED_ORIGINS = ['https://*.pythonanywhere.com']
