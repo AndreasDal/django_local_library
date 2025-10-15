@@ -154,7 +154,7 @@ from .models import Author
 
 class AuthorCreate(PermissionRequiredMixin, CreateView):
     model = Author
-    fields = ["first_name", "last_name", "date_of_birth", "date_of_death"]
+    fields = ["first_name", "last_name", "date_of_birth", "date_of_death", "about"]
     initial = {"date_of_death": "11/11/2023"}
     permission_required = "catelog.add_author"
 

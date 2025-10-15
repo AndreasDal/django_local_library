@@ -28,7 +28,7 @@ class BookInline(admin.StackedInline):
 # Define the admin class
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'last_name', 'first_name', 'date_of_birth', 'date_of_death')
-    fields = ['last_name', 'first_name', ('date_of_birth', 'date_of_death')]
+    fields = ['last_name', 'first_name', ('date_of_birth', 'date_of_death'), 'about',]
     # exclude = ['first_name'] # excluderer first_name
 
     inlines = [BookInline]

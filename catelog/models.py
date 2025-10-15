@@ -149,6 +149,12 @@ class Author(models.Model):
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
+    
+    about = models.TextField(
+        max_length=1000,
+        help_text="Enter a brief description of the Author",
+        null=True,
+    )
 
     class Meta:
         ordering = ['last_name', 'first_name']
